@@ -5,15 +5,13 @@ namespace Tijanieneye10\Playground;
 class NameFormatter
 {
     public string $initials;
-    public function __construct(protected string $fullname)
-    {
-    }
+
+    public function __construct(protected string $fullname) {}
 
     public static function make(string $fullname): self
     {
         return new static($fullname);
     }
-
 
     public function firstname(): string
     {
@@ -42,7 +40,4 @@ class NameFormatter
 
         return "{$firsNameInitial}{$lastNameInitial}";
     }
-
-
-
 }
