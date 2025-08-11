@@ -37,10 +37,13 @@ class NameFormatter
 
     public function initials(): string
     {
-        $firsNameInitial = explode(' ', $this->fullname)[0][0];
-        $lastNameInitial = explode(' ', $this->fullname)[1][0];
+        $parts = preg_split('/\s+/', trim($this->fullname));
 
-        return "{$firsNameInitial}{$lastNameInitial}";
+        $firstInitial = mb_substr($parts[0] ?? '', 0, 1);
+        $lastInitial  = mb_substr($parts[1] ?? '', 0, 1);
+
+        return strtoupper("{$firstInitial}{$lastInitial}");
+
     }
 
 

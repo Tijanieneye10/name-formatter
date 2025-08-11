@@ -1,11 +1,11 @@
 {
-    "name": "tijanieneye10/php-package",
+    "name": "tijanieneye10/name-formatter",
     "description": "Play around",
     "keywords": [
         "Tijanieneye10",
-        "php-package"
+        "name-formatter"
     ],
-    "homepage": "https://github.com/tijanieneye10/php-package",
+    "homepage": "https://github.com/tijanieneye10/name-formatter",
     "license": "MIT",
     "authors": [
         {
