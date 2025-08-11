@@ -50,14 +50,14 @@ final class NameFormatter
         return implode(' ', array_slice($this->nameParts, 1, -1));
     }
 
-    public function capitalize(): string
+    public function toUpperCase(): string
     {
         return ucfirst($this->fullname);
     }
 
-    public function lowerCaps(): string
+    public function toLowerCase(): string
     {
-        return lcfirst($this->fullname);
+        return strtolower($this->fullname);
     }
 
     private function initials(): string
@@ -98,10 +98,10 @@ final class NameFormatter
 
         // Build UI Avatars URL
         $url = 'https://ui-avatars.com/api/';
-        $url .= '?name='.urlencode($this->fullname);
-        $url .= '&size='.$size;
-        $url .= '&background='.$backgroundColor;
-        $url .= '&color='.$textColor;
+        $url .= '?name=' . urlencode($this->fullname);
+        $url .= '&size=' . $size;
+        $url .= '&background=' . $backgroundColor;
+        $url .= '&color=' . $textColor;
         $url .= '&bold=true';
         $url .= '&format=svg';
 
@@ -117,6 +117,6 @@ final class NameFormatter
     {
         $parts = preg_split('/\s+/', trim($this->fullname));
 
-        return array_filter($parts, fn ($part) => ! empty($part));
+        return array_filter($parts, fn($part) => ! empty($part));
     }
 }

@@ -11,7 +11,7 @@ A simple and lightweight PHP package for formatting and extracting information f
 
 -   🎯 **Extract first, middle, and last names** from full names
 -   🔤 **Generate initials** from full names (supports multiple names)
--   📝 **Text case formatting** (capitalize, lowercase first letter)
+-   📝 **Text case formatting** (toUpperCase, toLowerCase)
 -   🎨 **Custom name formatting** with flexible templates
 -   🖼️ **Generate avatar URLs** using UI Avatars service
 -   🚀 **Simple and fluent API** with static factory method
@@ -77,10 +77,10 @@ $initials = $formatter->initials; // Returns: "TUE"
 $formatter = NameFormatter::make('john doe');
 
 // Capitalize first letter
-$capitalized = $formatter->capitalize(); // Returns: "John doe"
+$capitalized = $formatter->toUpperCase(); // Returns: "John doe"
 
-// Lowercase first letter
-$lowerCaps = $formatter->lowerCaps(); // Returns: "john doe"
+// Lowercase entire string
+$lowercase = $formatter->toLowerCase(); // Returns: "john doe"
 ```
 
 #### Custom Name Formatting
@@ -121,7 +121,7 @@ $avatarUrl = $formatter->avatarUrl(150, '10B981', '000000'); // Green background
 $userName = 'tijani usman eneye';
 $formatter = NameFormatter::make($userName);
 
-echo "Welcome, " . $formatter->capitalize(); // "Welcome, Tijani usman eneye"
+echo "Welcome, " . $formatter->toUpperCase(); // "Welcome, Tijani usman eneye"
 echo "Your initials: " . $formatter->initials; // "Your initials: TUE"
 echo "Formal name: " . $formatter->format('L, F M'); // "Formal name: Eneye, Tijani Usman"
 echo "Avatar: " . $formatter->avatar(80); // Generate 80x80 avatar
@@ -193,8 +193,8 @@ foreach ($users as $userName) {
 | Method                                        | Description                 | Parameters                                                               | Returns                  |
 | --------------------------------------------- | --------------------------- | ------------------------------------------------------------------------ | ------------------------ |
 | `make(string $fullname)`                      | Static factory method       | `$fullname` - Full name string                                           | `NameFormatter` instance |
-| `capitalize()`                                | Capitalize first letter     | None                                                                     | `string`                 |
-| `lowerCaps()`                                 | Lowercase first letter      | None                                                                     | `string`                 |
+| `toUpperCase()`                               | Capitalize first letter     | None                                                                     | `string`                 |
+| `toLowerCase()`                               | Lowercase entire string     | None                                                                     | `string`                 |
 | `format(string $format)`                      | Format name with template   | `$format` - Template string                                              | `string`                 |
 | `avatar(int $size, string $bg, string $text)` | Generate avatar URL         | `$size` - Size in pixels, `$bg` - Background color, `$text` - Text color | `string`                 |
 | `avatarUrl(...)`                              | Alias for `avatar()` method | Same as `avatar()`                                                       | `string`                 |
