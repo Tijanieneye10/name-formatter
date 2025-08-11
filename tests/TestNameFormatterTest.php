@@ -117,7 +117,7 @@ it('can generate avatar URL', function () {
     $avatarUrl = NameFormatter::make($fullname)->avatar();
 
     expect($avatarUrl)->toContain('ui-avatars.com/api/');
-    expect($avatarUrl)->toContain('name=' . urlencode($fullname));
+    expect($avatarUrl)->toContain('name='.urlencode($fullname));
     expect($avatarUrl)->toContain('size=100');
     expect($avatarUrl)->toContain('background=3B82F6');
     expect($avatarUrl)->toContain('color=FFFFFF');
@@ -129,7 +129,7 @@ it('can generate avatar URL with custom parameters', function () {
     $avatarUrl = NameFormatter::make($fullname)->avatar(200, 'FF6B6B', '000000');
 
     expect($avatarUrl)->toContain('ui-avatars.com/api/');
-    expect($avatarUrl)->toContain('name=' . urlencode($fullname));
+    expect($avatarUrl)->toContain('name='.urlencode($fullname));
     expect($avatarUrl)->toContain('size=200');
     expect($avatarUrl)->toContain('background=FF6B6B');
     expect($avatarUrl)->toContain('color=000000');
@@ -141,7 +141,7 @@ it('can generate avatar URL using avatarUrl alias', function () {
     $avatarUrl = NameFormatter::make($fullname)->avatarUrl(150, '10B981', 'FFFFFF');
 
     expect($avatarUrl)->toContain('ui-avatars.com/api/');
-    expect($avatarUrl)->toContain('name=' . urlencode($fullname));
+    expect($avatarUrl)->toContain('name='.urlencode($fullname));
     expect($avatarUrl)->toContain('size=150');
     expect($avatarUrl)->toContain('background=10B981');
     expect($avatarUrl)->toContain('color=FFFFFF');
