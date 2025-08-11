@@ -98,10 +98,10 @@ final class NameFormatter
 
         // Build UI Avatars URL
         $url = 'https://ui-avatars.com/api/';
-        $url .= '?name=' . urlencode($this->fullname);
-        $url .= '&size=' . $size;
-        $url .= '&background=' . $backgroundColor;
-        $url .= '&color=' . $textColor;
+        $url .= '?name='.urlencode($this->fullname);
+        $url .= '&size='.$size;
+        $url .= '&background='.$backgroundColor;
+        $url .= '&color='.$textColor;
         $url .= '&bold=true';
         $url .= '&format=svg';
 

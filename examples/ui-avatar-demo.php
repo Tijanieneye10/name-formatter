@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 use Tijanieneye10\Playground\NameFormatter;
 
@@ -12,7 +12,7 @@ echo "==============================\n\n";
 $formatter = NameFormatter::make('John Michael Doe');
 
 echo "Test Name: 'John Michael Doe'\n";
-echo "Initials: " . $formatter->initials . "\n\n";
+echo 'Initials: '.$formatter->initials."\n\n";
 
 echo "🎯 AVATAR EXAMPLES:\n";
 echo "==================\n\n";
@@ -21,42 +21,42 @@ echo "==================\n\n";
 echo "1️⃣ Small Avatar (50x50):\n";
 echo "   Size: 50x50 pixels\n";
 echo "   Colors: Blue background (#3B82F6), White text (#FFFFFF)\n";
-echo "   URL: " . $formatter->avatar(50) . "\n\n";
+echo '   URL: '.$formatter->avatar(50)."\n\n";
 
 echo "2️⃣ Medium Avatar (100x100):\n";
 echo "   Size: 100x100 pixels\n";
 echo "   Colors: Blue background (#3B82F6), White text (#FFFFFF)\n";
-echo "   URL: " . $formatter->avatar(100) . "\n\n";
+echo '   URL: '.$formatter->avatar(100)."\n\n";
 
 echo "3️⃣ Large Avatar (200x200):\n";
 echo "   Size: 200x200 pixels\n";
 echo "   Colors: Blue background (#3B82F6), White text (#FFFFFF)\n";
-echo "   URL: " . $formatter->avatar(200) . "\n\n";
+echo '   URL: '.$formatter->avatar(200)."\n\n";
 
 echo "4️⃣ Custom Colors:\n";
 echo "   Size: 150x150 pixels\n";
 echo "   Colors: Green background (#10B981), Black text (#000000)\n";
-echo "   URL: " . $formatter->avatar(150, '10B981', '000000') . "\n\n";
+echo '   URL: '.$formatter->avatar(150, '10B981', '000000')."\n\n";
 
 echo "5️⃣ Red Theme:\n";
 echo "   Size: 120x120 pixels\n";
 echo "   Colors: Red background (#EF4444), White text (#FFFFFF)\n";
-echo "   URL: " . $formatter->avatar(120, 'EF4444', 'FFFFFF') . "\n\n";
+echo '   URL: '.$formatter->avatar(120, 'EF4444', 'FFFFFF')."\n\n";
 
 echo "6️⃣ Purple Theme:\n";
 echo "   Size: 80x80 pixels\n";
 echo "   Colors: Purple background (#8B5CF6), White text (#FFFFFF)\n";
-echo "   URL: " . $formatter->avatar(80, '8B5CF6', 'FFFFFF') . "\n\n";
+echo '   URL: '.$formatter->avatar(80, '8B5CF6', 'FFFFFF')."\n\n";
 
 echo "🎨 USING AS PROPERTY:\n";
 echo "====================\n\n";
 
-echo "Default avatar: " . $formatter->avatar . "\n\n";
+echo 'Default avatar: '.$formatter->avatar."\n\n";
 
 echo "🔧 USING AS METHOD:\n";
 echo "==================\n\n";
 
-echo "Custom avatar: " . $formatter->avatar(75, 'F59E0B', 'FFFFFF') . "\n\n";
+echo 'Custom avatar: '.$formatter->avatar(75, 'F59E0B', 'FFFFFF')."\n\n";
 
 echo "📱 REAL-WORLD USAGE EXAMPLES:\n";
 echo "=============================\n\n";
@@ -64,21 +64,21 @@ echo "=============================\n\n";
 // User profile example
 $user = NameFormatter::make('Alice Johnson');
 echo "User Profile:\n";
-echo "Name: " . $user->format() . "\n";
-echo "Avatar: " . $user->avatar(64, '3B82F6', 'FFFFFF') . "\n\n";
+echo 'Name: '.$user->format()."\n";
+echo 'Avatar: '.$user->avatar(64, '3B82F6', 'FFFFFF')."\n\n";
 
 // Multiple users with different themes
 $users = [
     ['name' => 'Bob Smith', 'color' => '10B981'],
     ['name' => 'Carol Davis', 'color' => 'F59E0B'],
     ['name' => 'David Wilson', 'color' => 'EF4444'],
-    ['name' => 'Emma Brown', 'color' => '8B5CF6']
+    ['name' => 'Emma Brown', 'color' => '8B5CF6'],
 ];
 
 echo "User List with Avatars:\n";
 foreach ($users as $userData) {
     $userFormatter = NameFormatter::make($userData['name']);
-    echo "  " . str_pad($userData['name'], 15) . " → " . $userFormatter->avatar(40, $userData['color'], 'FFFFFF') . "\n";
+    echo '  '.str_pad($userData['name'], 15).' → '.$userFormatter->avatar(40, $userData['color'], 'FFFFFF')."\n";
 }
 
 echo "\n✨ UI AVATAR FEATURES:\n";
@@ -105,4 +105,3 @@ echo "• Is fast and reliable\n\n";
 
 echo "🎉 Perfect for user profiles, chat apps, and UI avatars!\n";
 echo "🚀 Generate professional-looking avatars from any name!\n";
-
