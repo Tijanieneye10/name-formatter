@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 use Tijanieneye10\Playground\NameFormatter;
 
@@ -13,7 +13,7 @@ $formatter = NameFormatter::make('John Michael Doe');
 
 echo "📝 Our Test Object:\n";
 echo "Full Name: 'John Michael Doe'\n";
-echo "Object Class: " . get_class($formatter) . "\n\n";
+echo 'Object Class: '.get_class($formatter)."\n\n";
 
 echo "🎯 HOW __get() MAGIC METHOD WORKS:\n";
 echo "==================================\n\n";
@@ -35,16 +35,16 @@ echo "==========================\n\n";
 
 // Show the magic happening
 echo "Accessing \$formatter->firstname:\n";
-echo "Result: '" . $formatter->firstname . "'\n\n";
+echo "Result: '".$formatter->firstname."'\n\n";
 
 echo "Accessing \$formatter->lastname:\n";
-echo "Result: '" . $formatter->lastname . "'\n\n";
+echo "Result: '".$formatter->lastname."'\n\n";
 
 echo "Accessing \$formatter->middlename:\n";
-echo "Result: '" . $formatter->middlename . "'\n\n";
+echo "Result: '".$formatter->middlename."'\n\n";
 
 echo "Accessing \$formatter->initials:\n";
-echo "Result: '" . $formatter->initials . "'\n\n";
+echo "Result: '".$formatter->initials."'\n\n";
 
 echo "🔍 BEHIND THE SCENES - What PHP Actually Does:\n";
 echo "===============================================\n\n";
@@ -78,7 +78,7 @@ echo "Try: \$formatter->unknown_property\n\n";
 try {
     $unknown = $formatter->unknown_property;
 } catch (\InvalidArgumentException $e) {
-    echo "❌ Error caught: " . $e->getMessage() . "\n";
+    echo '❌ Error caught: '.$e->getMessage()."\n";
     echo "This is the 'default' case in the match statement!\n\n";
 }
 
