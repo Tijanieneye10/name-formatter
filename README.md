@@ -1,56 +1,141 @@
-# Play around
+# Name Formatter
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/tijanieneye10/php-package.svg?style=flat-square)](https://packagist.org/packages/tijanieneye10/php-package)
-[![Tests](https://img.shields.io/github/actions/workflow/status/tijanieneye10/php-package/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/tijanieneye10/php-package/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/tijanieneye10/php-package.svg?style=flat-square)](https://packagist.org/packages/tijanieneye10/php-package)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tijanieneye10/name-formatter.svg?style=flat-square)](https://packagist.org/packages/tijanieneye10/name-formatter)
+[![Tests](https://img.shields.io/github/actions/workflow/status/tijanieneye10/name-formatter/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/tijanieneye10/name-formatter/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/tijanieneye10/name-formatter.svg?style=flat-square)](https://packagist.org/packages/tijanieneye10/name-formatter)
+[![License](https://img.shields.io/github/license/tijanieneye10/name-formatter.svg?style=flat-square)](LICENSE.md)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+A simple and lightweight PHP package for formatting and extracting information from full names. Perfect for applications that need to handle user names, display initials, or format names consistently.
 
-## Support us
+## Features
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/php-package.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/php-package)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+-   🎯 **Extract first and last names** from full names
+-   🔤 **Generate initials** from full names
+-   📝 **Text case formatting** (capitalize, lowercase first letter)
+-   🚀 **Simple and fluent API** with static factory method
+-   💪 **PHP 8.4+** with modern features
+-   🧪 **Fully tested** with Pest PHP
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
-composer require tijanieneye10/php-package
+composer require tijanieneye10/name-formatter
 ```
+
+## Requirements
+
+-   PHP 8.4 or higher
 
 ## Usage
 
+### Basic Usage
+
 ```php
-$skeleton = new Tijanieneye10\Playground();
-echo $skeleton->echoPhrase('Hello, Tijanieneye10!');
+use Tijanieneye10\Playground\NameFormatter;
+
+// Create a new instance
+$formatter = new NameFormatter('John Doe');
+
+// Or use the static factory method (recommended)
+$formatter = NameFormatter::make('John Doe');
+```
+
+### Available Methods
+
+#### Extract Names
+
+```php
+$formatter = NameFormatter::make('John Doe');
+
+// Get first name
+$firstName = $formatter->firstname(); // Returns: "John"
+
+// Get last name
+$lastName = $formatter->lastname(); // Returns: "Doe"
+```
+
+#### Generate Initials
+
+```php
+$formatter = NameFormatter::make('John Doe');
+
+// Get initials
+$initials = $formatter->initials(); // Returns: "JD"
+```
+
+#### Text Formatting
+
+```php
+$formatter = NameFormatter::make('john doe');
+
+// Capitalize first letter
+$capitalized = $formatter->capitalize(); // Returns: "John doe"
+
+// Lowercase first letter
+$lowerCaps = $formatter->lowerCaps(); // Returns: "john doe"
+```
+
+### Real-World Examples
+
+#### User Profile Display
+
+```php
+$userName = 'jane smith';
+$formatter = NameFormatter::make($userName);
+
+echo "Welcome, " . $formatter->capitalize(); // "Welcome, Jane smith"
+echo "Your initials: " . $formatter->initials(); // "Your initials: JS"
+```
+
+#### Form Processing
+
+```php
+$fullName = $_POST['full_name'] ?? '';
+$formatter = NameFormatter::make($fullName);
+
+$firstName = $formatter->firstname();
+$lastName = $formatter->lastname();
+$initials = $formatter->initials();
+
+// Use in database or display
 ```
 
 ## Testing
+
+Run the test suite:
 
 ```bash
 composer test
 ```
 
-## Changelog
+Run tests with coverage:
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+```bash
+composer test-coverage
+```
+
+## Code Formatting
+
+Format your code using Laravel Pint:
+
+```bash
+composer format
+```
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Security Vulnerabilities
+## Security
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+If you discover any security-related issues, please email brainyworld10@gmail.com instead of using the issue tracker.
 
 ## Credits
 
-- [Tijani Eneye Usman](https://github.com/Tijanieneye10)
-- [All Contributors](../../contributors)
+-   [Tijani Eneye Usman](https://github.com/Tijanieneye10)
+-   [All Contributors](../../contributors)
 
 ## License
 
