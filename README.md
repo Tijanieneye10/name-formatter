@@ -39,10 +39,10 @@ composer require tijanieneye10/name-formatter
 use Tijanieneye10\Playground\NameFormatter;
 
 // Create a new instance
-$formatter = new NameFormatter('John Doe');
+$formatter = new NameFormatter('Tijani Usman Eneye');
 
 // Or use the static factory method (recommended)
-$formatter = NameFormatter::make('John Doe');
+$formatter = NameFormatter::make('Tijani Usman Eneye');
 ```
 
 ### Available Methods
@@ -50,25 +50,25 @@ $formatter = NameFormatter::make('John Doe');
 #### Extract Names
 
 ```php
-$formatter = NameFormatter::make('John Michael Doe');
+$formatter = NameFormatter::make('Tijani Usman Eneye');
 
 // Get first name
-$firstName = $formatter->firstname; // Returns: "John"
+$firstName = $formatter->firstname; // Returns: "Tijani"
 
 // Get middle name(s)
-$middleName = $formatter->middlename; // Returns: "Michael"
+$middleName = $formatter->middlename; // Returns: "Usman"
 
 // Get last name
-$lastName = $formatter->lastname; // Returns: "Doe"
+$lastName = $formatter->lastname; // Returns: "Eneye"
 ```
 
 #### Generate Initials
 
 ```php
-$formatter = NameFormatter::make('John Michael Doe');
+$formatter = NameFormatter::make('Tijani Usman Eneye');
 
 // Get initials (supports multiple names)
-$initials = $formatter->initials; // Returns: "JMD"
+$initials = $formatter->initials; // Returns: "TUE"
 ```
 
 #### Text Formatting
@@ -86,25 +86,25 @@ $lowerCaps = $formatter->lowerCaps(); // Returns: "john doe"
 #### Custom Name Formatting
 
 ```php
-$formatter = NameFormatter::make('John Michael Doe');
+$formatter = NameFormatter::make('Tijani Usman Eneye');
 
-// Default format: "John Michael Doe"
+// Default format: "Tijani Usman Eneye"
 $default = $formatter->format();
 
 // Custom formats using placeholders:
 // F = First name, M = Middle name, L = Last name
-$lastFirst = $formatter->format('L, F M'); // Returns: "Doe, John Michael"
-$initialsOnly = $formatter->format('F. M. L.'); // Returns: "J. Michael. Doe."
-$formal = $formatter->format('L, F'); // Returns: "Doe, John"
+$lastFirst = $formatter->format('L, F M'); // Returns: "Eneye, Tijani Usman"
+$initialsOnly = $formatter->format('F. M. L.'); // Returns: "T. Usman. Eneye."
+$formal = $formatter->format('L, F'); // Returns: "Eneye, Tijani"
 ```
 
 #### Generate Avatar URLs
 
 ```php
-$formatter = NameFormatter::make('John Doe');
+$formatter = NameFormatter::make('Tijani Usman Eneye');
 
 // Generate avatar URL with default settings
-$avatarUrl = $formatter->avatar(); // Returns: "https://ui-avatars.com/api/?name=John%20Doe&size=100&background=3B82F6&color=FFFFFF&bold=true&format=svg"
+$avatarUrl = $formatter->avatar(); // Returns: "https://ui-avatars.com/api/?name=Tijani%20Usman%20Eneye&size=100&background=3B82F6&color=FFFFFF&bold=true&format=svg"
 
 // Customize avatar size and colors
 $avatarUrl = $formatter->avatar(200, 'FF6B6B', 'FFFFFF'); // Custom size and background color
@@ -118,12 +118,12 @@ $avatarUrl = $formatter->avatarUrl(150, '10B981', '000000'); // Green background
 #### User Profile Display
 
 ```php
-$userName = 'jane marie smith';
+$userName = 'tijani usman eneye';
 $formatter = NameFormatter::make($userName);
 
-echo "Welcome, " . $formatter->capitalize(); // "Welcome, Jane marie smith"
-echo "Your initials: " . $formatter->initials; // "Your initials: JMS"
-echo "Formal name: " . $formatter->format('L, F M'); // "Formal name: Smith, Jane Marie"
+echo "Welcome, " . $formatter->capitalize(); // "Welcome, Tijani usman eneye"
+echo "Your initials: " . $formatter->initials; // "Your initials: TUE"
+echo "Formal name: " . $formatter->format('L, F M'); // "Formal name: Eneye, Tijani Usman"
 echo "Avatar: " . $formatter->avatar(80); // Generate 80x80 avatar
 ```
 
@@ -144,7 +144,7 @@ $initials = $formatter->initials;
 #### Database Storage
 
 ```php
-$fullName = 'Dr. John Michael Doe Jr.';
+$fullName = 'Dr. Tijani Usman Eneye Jr.';
 $formatter = NameFormatter::make($fullName);
 
 $user = User::create([
@@ -161,9 +161,9 @@ $user = User::create([
 
 ```php
 $users = [
-    'John Doe',
-    'Jane Smith',
-    'Bob Johnson'
+    'Tijani Usman Eneye',
+    'Aisha Bello',
+    'Musa Ahmed'
 ];
 
 foreach ($users as $userName) {
