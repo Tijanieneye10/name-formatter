@@ -26,6 +26,7 @@ final class NameFormatter
             'lastname' => $this->lastname(),
             'middlename' => $this->middlename(),
             'initials' => $this->initials(),
+            'avatar' => $this->avatar(),
             default => throw new \InvalidArgumentException("Property '$name' does not exist.")
         };
     }
@@ -87,6 +88,29 @@ final class NameFormatter
 
         // Clean up extra spaces
         return preg_replace('/\s+/', ' ', trim($result));
+    }
+
+    public function avatar(int $size = 100, string $backgroundColor = '3B82F6', string $textColor = 'FFFFFF'): string
+    {
+        // Remove # from colors if present
+        $backgroundColor = ltrim($backgroundColor, '#');
+        $textColor = ltrim($textColor, '#');
+
+        // Build UI Avatars URL
+        $url = 'https://ui-avatars.com/api/';
+        $url .= '?name=' . urlencode($this->fullname);
+        $url .= '&size=' . $size;
+        $url .= '&background=' . $backgroundColor;
+        $url .= '&color=' . $textColor;
+        $url .= '&bold=true';
+        $url .= '&format=svg';
+
+        return $url;
+    }
+
+    public function avatarUrl(int $size = 100, string $backgroundColor = '3B82F6', string $textColor = 'FFFFFF'): string
+    {
+        return $this->avatar($size, $backgroundColor, $textColor);
     }
 
     private function parseName(): array
