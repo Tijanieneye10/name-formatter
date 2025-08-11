@@ -9,12 +9,14 @@ A simple and lightweight PHP package for formatting and extracting information f
 
 ## Features
 
--   🎯 **Extract first and last names** from full names
--   🔤 **Generate initials** from full names
+-   🎯 **Extract first, middle, and last names** from full names
+-   🔤 **Generate initials** from full names (supports multiple names)
 -   📝 **Text case formatting** (capitalize, lowercase first letter)
+-   🎨 **Custom name formatting** with flexible templates
 -   🚀 **Simple and fluent API** with static factory method
--   💪 **PHP 8.4+** with modern features
+-   💪 **PHP 8.4+** with modern features and strict typing
 -   🧪 **Fully tested** with Pest PHP
+-   🛡️ **Robust parsing** handles multiple spaces and edge cases
 
 ## Installation
 
@@ -47,10 +49,13 @@ $formatter = NameFormatter::make('John Doe');
 #### Extract Names
 
 ```php
-$formatter = NameFormatter::make('John Doe');
+$formatter = NameFormatter::make('John Michael Doe');
 
 // Get first name
 $firstName = $formatter->firstname(); // Returns: "John"
+
+// Get middle name(s)
+$middleName = $formatter->middlename(); // Returns: "Michael"
 
 // Get last name
 $lastName = $formatter->lastname(); // Returns: "Doe"
@@ -59,10 +64,10 @@ $lastName = $formatter->lastname(); // Returns: "Doe"
 #### Generate Initials
 
 ```php
-$formatter = NameFormatter::make('John Doe');
+$formatter = NameFormatter::make('John Michael Doe');
 
-// Get initials
-$initials = $formatter->initials(); // Returns: "JD"
+// Get initials (now supports multiple names)
+$initials = $formatter->initials(); // Returns: "JMD"
 ```
 
 #### Text Formatting
@@ -77,16 +82,32 @@ $capitalized = $formatter->capitalize(); // Returns: "John doe"
 $lowerCaps = $formatter->lowerCaps(); // Returns: "john doe"
 ```
 
+#### Custom Name Formatting
+
+```php
+$formatter = NameFormatter::make('John Michael Doe');
+
+// Default format: "John Michael Doe"
+$default = $formatter->format();
+
+// Custom formats using placeholders:
+// F = First name, M = Middle name, L = Last name
+$lastFirst = $formatter->format('L, F M'); // Returns: "Doe, John Michael"
+$initialsOnly = $formatter->format('F. M. L.'); // Returns: "J. Michael. Doe."
+$formal = $formatter->format('L, F'); // Returns: "Doe, John"
+```
+
 ### Real-World Examples
 
 #### User Profile Display
 
 ```php
-$userName = 'jane smith';
+$userName = 'jane marie smith';
 $formatter = NameFormatter::make($userName);
 
-echo "Welcome, " . $formatter->capitalize(); // "Welcome, Jane smith"
-echo "Your initials: " . $formatter->initials(); // "Your initials: JS"
+echo "Welcome, " . $formatter->capitalize(); // "Welcome, Jane marie smith"
+echo "Your initials: " . $formatter->initials(); // "Your initials: JMS"
+echo "Formal name: " . $formatter->format('L, F M'); // "Formal name: Smith, Jane Marie"
 ```
 
 #### Form Processing
@@ -96,11 +117,35 @@ $fullName = $_POST['full_name'] ?? '';
 $formatter = NameFormatter::make($fullName);
 
 $firstName = $formatter->firstname();
+$middleName = $formatter->middlename();
 $lastName = $formatter->lastname();
 $initials = $formatter->initials();
 
 // Use in database or display
 ```
+
+#### Database Storage
+
+```php
+$fullName = 'Dr. John Michael Doe Jr.';
+$formatter = NameFormatter::make($fullName);
+
+$user = User::create([
+    'first_name' => $formatter->firstname(),
+    'middle_name' => $formatter->middlename(),
+    'last_name' => $formatter->lastname(),
+    'initials' => $formatter->initials(),
+    'display_name' => $formatter->format('F M L'),
+]);
+```
+
+### Edge Cases Handled
+
+-   **Single names**: Returns the same value for first and last name
+-   **Multiple middle names**: Combines all middle names into one string
+-   **Extra spaces**: Automatically trims and normalizes spacing
+-   **Empty names**: Returns empty strings gracefully
+-   **Unicode support**: Properly handles international characters
 
 ## Testing
 
