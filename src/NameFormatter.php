@@ -38,7 +38,7 @@ class NameFormatter
         $parts = preg_split('/\s+/', trim($this->fullname));
 
         $firstInitial = mb_substr($parts[0] ?? '', 0, 1);
-        $lastInitial  = mb_substr($parts[1] ?? '', 0, 1);
+        $lastInitial = mb_substr($parts[1] ?? '', 0, 1);
 
         return strtoupper("{$firstInitial}{$lastInitial}");
 
