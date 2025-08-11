@@ -36,7 +36,7 @@ composer require tijanieneye10/name-formatter
 ### Basic Usage
 
 ```php
-use Tijanieneye10\Playground\NameFormatter;
+use Tijanieneye10\NameFormatter;
 
 // Create a new instance
 $formatter = new NameFormatter('Tijani Usman Eneye');
