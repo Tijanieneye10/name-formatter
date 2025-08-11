@@ -1,6 +1,6 @@
 {
     "name": "tijanieneye10/name-formatter",
-    "description": "Play around",
+    "description": "A simple and lightweight PHP package for formatting and extracting information from full names. Perfect for applications that need to handle user names, display initials, or format names consistently",
     "keywords": [
         "Tijanieneye10",
         "name-formatter"
