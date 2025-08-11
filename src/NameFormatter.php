@@ -93,6 +93,6 @@ final class NameFormatter
     {
         $parts = preg_split('/\s+/', trim($this->fullname));
 
-        return array_filter($parts, fn($part) => ! empty($part));
+        return array_filter($parts, fn ($part) => ! empty($part));
     }
 }
