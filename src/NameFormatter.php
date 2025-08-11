@@ -7,8 +7,11 @@ namespace Tijanieneye10\Playground;
 final class NameFormatter
 {
     private array $nameParts;
+
     public ?string $firstname = null;
+
     public ?string $lastname = null;
+
     public ?string $middlename = null;
 
     public function __construct(private readonly string $fullname)
@@ -21,7 +24,7 @@ final class NameFormatter
 
     public static function make(string $fullname): self
     {
-        
+
         return new self($fullname);
     }
 
@@ -88,6 +91,6 @@ final class NameFormatter
     {
         $parts = preg_split('/\s+/', trim($this->fullname));
 
-        return array_filter($parts, fn($part) => ! empty($part));
+        return array_filter($parts, fn ($part) => ! empty($part));
     }
 }
