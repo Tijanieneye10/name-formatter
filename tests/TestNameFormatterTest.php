@@ -8,7 +8,7 @@ it('can get firstname', function () {
     $fullname = 'John Doe';
     $firstname = 'John';
 
-    $firstnameFormatted = NameFormatter::make($fullname)->firstname();
+    $firstnameFormatted = NameFormatter::make($fullname)->firstname;
 
     expect($firstnameFormatted)->toBe($firstname);
 });
@@ -17,7 +17,7 @@ it('can get lastname', function () {
     $fullname = 'John Doe';
     $lastname = 'Doe';
 
-    $lastnameFormatted = NameFormatter::make($fullname)->lastname();
+    $lastnameFormatted = NameFormatter::make($fullname)->lastname;
 
     expect($lastnameFormatted)->toBe($lastname);
 });
@@ -26,7 +26,7 @@ it('can get middlename', function () {
     $fullname = 'John Michael Doe';
     $middlename = 'Michael';
 
-    $middlenameFormatted = NameFormatter::make($fullname)->middlename();
+    $middlenameFormatted = NameFormatter::make($fullname)->middlename;
 
     expect($middlenameFormatted)->toBe($middlename);
 });
@@ -34,7 +34,7 @@ it('can get middlename', function () {
 it('returns empty string for middlename when not present', function () {
     $fullname = 'John Doe';
 
-    $middlenameFormatted = NameFormatter::make($fullname)->middlename();
+    $middlenameFormatted = NameFormatter::make($fullname)->middlename;
 
     expect($middlenameFormatted)->toBe('');
 });
@@ -43,7 +43,7 @@ it('can get initials', function () {
     $fullname = 'John Doe';
     $initials = 'JD';
 
-    $initialsFormatted = NameFormatter::make($fullname)->initials();
+    $initialsFormatted = NameFormatter::make($fullname)->initials;
 
     expect($initialsFormatted)->toBe($initials);
 });
@@ -52,7 +52,7 @@ it('can get initials with middle name', function () {
     $fullname = 'John Michael Doe';
     $initials = 'JMD';
 
-    $initialsFormatted = NameFormatter::make($fullname)->initials();
+    $initialsFormatted = NameFormatter::make($fullname)->initials;
 
     expect($initialsFormatted)->toBe($initials);
 });
@@ -78,10 +78,10 @@ it('handles single name', function () {
 
     $formatter = NameFormatter::make($fullname);
 
-    expect($formatter->firstname())->toBe('John');
-    expect($formatter->lastname())->toBe('John');
-    expect($formatter->middlename())->toBe('');
-    expect($formatter->initials())->toBe('J');
+    expect($formatter->firstname)->toBe('John');
+    expect($formatter->lastname)->toBe('John');
+    expect($formatter->middlename)->toBe('');
+    expect($formatter->initials)->toBe('J');
 });
 
 it('handles names with multiple spaces', function () {
@@ -89,8 +89,8 @@ it('handles names with multiple spaces', function () {
 
     $formatter = NameFormatter::make($fullname);
 
-    expect($formatter->firstname())->toBe('John');
-    expect($formatter->middlename())->toBe('Michael');
-    expect($formatter->lastname())->toBe('Doe');
-    expect($formatter->initials())->toBe('JMD');
+    expect($formatter->firstname)->toBe('John');
+    expect($formatter->middlename)->toBe('Michael');
+    expect($formatter->lastname)->toBe('Doe');
+    expect($formatter->initials)->toBe('JMD');
 });
