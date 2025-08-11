@@ -53,18 +53,13 @@ $formatter = NameFormatter::make('John Doe');
 $formatter = NameFormatter::make('John Michael Doe');
 
 // Get first name
-$firstName = $formatter->firstname(); // Returns: "John"
+$firstName = $formatter->firstname; // Returns: "John"
 
 // Get middle name(s)
-$middleName = $formatter->middlename(); // Returns: "Michael"
+$middleName = $formatter->middlename; // Returns: "Michael"
 
 // Get last name
-$lastName = $formatter->lastname(); // Returns: "Doe"
-
-// You can also access these as properties
-$firstName = $formatter->firstname; // Same as above
-$middleName = $formatter->middlename; // Same as above
-$lastName = $formatter->lastname; // Same as above
+$lastName = $formatter->lastname; // Returns: "Doe"
 ```
 
 #### Generate Initials
@@ -73,10 +68,7 @@ $lastName = $formatter->lastname; // Same as above
 $formatter = NameFormatter::make('John Michael Doe');
 
 // Get initials (supports multiple names)
-$initials = $formatter->initials(); // Returns: "JMD"
-
-// Or access as property
-$initials = $formatter->initials; // Same as above
+$initials = $formatter->initials; // Returns: "JMD"
 ```
 
 #### Text Formatting
@@ -201,10 +193,6 @@ foreach ($users as $userName) {
 | Method                                        | Description                 | Parameters                                                               | Returns                  |
 | --------------------------------------------- | --------------------------- | ------------------------------------------------------------------------ | ------------------------ |
 | `make(string $fullname)`                      | Static factory method       | `$fullname` - Full name string                                           | `NameFormatter` instance |
-| `firstname()`                                 | Get first name              | None                                                                     | `string`                 |
-| `middlename()`                                | Get middle name(s)          | None                                                                     | `string`                 |
-| `lastname()`                                  | Get last name               | None                                                                     | `string`                 |
-| `initials()`                                  | Get initials                | None                                                                     | `string`                 |
 | `capitalize()`                                | Capitalize first letter     | None                                                                     | `string`                 |
 | `lowerCaps()`                                 | Lowercase first letter      | None                                                                     | `string`                 |
 | `format(string $format)`                      | Format name with template   | `$format` - Template string                                              | `string`                 |
@@ -213,13 +201,14 @@ foreach ($users as $userName) {
 
 ### Properties (via `__get`)
 
-| Property     | Description        | Returns  |
-| ------------ | ------------------ | -------- |
-| `firstname`  | First name         | `string` |
-| `middlename` | Middle name(s)     | `string` |
-| `lastname`   | Last name          | `string` |
-| `initials`   | Initials           | `string` |
-| `avatar`     | Default avatar URL | `string` |
+The following properties are accessible through PHP's magic `__get` method, which internally calls private methods:
+
+| Property     | Description    | Returns  |
+| ------------ | -------------- | -------- |
+| `firstname`  | First name     | `string` |
+| `middlename` | Middle name(s) | `string` |
+| `lastname`   | Last name      | `string` |
+| `initials`   | Initials       | `string` |
 
 ### Format Template Placeholders
 
