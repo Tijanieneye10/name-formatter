@@ -7,35 +7,40 @@ namespace Tijanieneye10\Playground;
 final class NameFormatter
 {
     private array $nameParts;
-    public ?string $firstname = null;
-    public ?string $lastname = null;
-    public ?string $middlename = null;
 
     public function __construct(private readonly string $fullname)
     {
         $this->nameParts = $this->parseName();
-        $this->firstname = $this->firstname();
-        $this->lastname = $this->lastname();
-        $this->middlename = $this->middlename();
     }
 
     public static function make(string $fullname): self
     {
-        
         return new self($fullname);
     }
 
-    public function firstname(): string
+    // Read-only properties that calculate values when accessed
+    public function __get(string $name): string
+    {
+        return match ($name) {
+            'firstname' => $this->firstname(),
+            'lastname' => $this->lastname(),
+            'middlename' => $this->middlename(),
+            'initials' => $this->initials(),
+            default => throw new \InvalidArgumentException("Property '$name' does not exist.")
+        };
+    }
+
+    private function firstname(): string
     {
         return $this->nameParts[0] ?? '';
     }
 
-    public function lastname(): string
+    private function lastname(): string
     {
         return $this->nameParts[array_key_last($this->nameParts)] ?? '';
     }
 
-    public function middlename(): string
+    private function middlename(): string
     {
         if (count($this->nameParts) <= 2) {
             return '';
@@ -54,7 +59,7 @@ final class NameFormatter
         return lcfirst($this->fullname);
     }
 
-    public function initials(): string
+    private function initials(): string
     {
         $initials = '';
 
@@ -70,9 +75,9 @@ final class NameFormatter
     public function format(string $format = 'F M L'): string
     {
         $replacements = [
-            'F' => $this->firstname(),
-            'M' => $this->middlename(),
-            'L' => $this->lastname(),
+            'F' => $this->firstname,
+            'M' => $this->middlename,
+            'L' => $this->lastname,
         ];
 
         $result = $format;
