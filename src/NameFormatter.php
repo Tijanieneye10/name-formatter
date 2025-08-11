@@ -7,7 +7,9 @@ namespace Tijanieneye10\NameFormatter;
 final class NameFormatter
 {
     private array $nameParts;
+
     private string $nameFormat;
+
     private array $nameMapping;
 
     public function __construct(private readonly string $fullname, string $format = 'LFM')
@@ -90,7 +92,7 @@ final class NameFormatter
 
         // Find all indices that are not F or L
         for ($i = 0; $i < count($this->nameParts); $i++) {
-            if (!in_array($i, array_values($this->nameMapping))) {
+            if (! in_array($i, array_values($this->nameMapping))) {
                 $middleIndices[] = $i;
             }
         }
@@ -104,8 +106,9 @@ final class NameFormatter
             return '';
         }
 
-        $middleParts = array_map(fn($index) => $this->nameParts[$index] ?? '', $middleIndices);
-        return implode(' ', array_filter($middleParts, fn($part) => !empty($part)));
+        $middleParts = array_map(fn ($index) => $this->nameParts[$index] ?? '', $middleIndices);
+
+        return implode(' ', array_filter($middleParts, fn ($part) => ! empty($part)));
     }
 
     public function toUpperCase(): string
@@ -156,10 +159,10 @@ final class NameFormatter
 
         // Build UI Avatars URL
         $url = 'https://ui-avatars.com/api/';
-        $url .= '?name=' . urlencode($this->fullname);
-        $url .= '&size=' . $size;
-        $url .= '&background=' . $backgroundColor;
-        $url .= '&color=' . $textColor;
+        $url .= '?name='.urlencode($this->fullname);
+        $url .= '&size='.$size;
+        $url .= '&background='.$backgroundColor;
+        $url .= '&color='.$textColor;
         $url .= '&bold=true';
         $url .= '&format=svg';
 
@@ -175,6 +178,6 @@ final class NameFormatter
     {
         $parts = preg_split('/\s+/', trim($this->fullname));
 
-        return array_filter($parts, fn($part) => ! empty($part));
+        return array_filter($parts, fn ($part) => ! empty($part));
     }
 }

@@ -231,7 +231,7 @@ describe('NameFormatter - Avatar Generation', function () {
         $avatarUrl = NameFormatter::make($fullname)->avatar();
 
         expect($avatarUrl)->toContain('ui-avatars.com/api/');
-        expect($avatarUrl)->toContain('name=' . urlencode($fullname));
+        expect($avatarUrl)->toContain('name='.urlencode($fullname));
         expect($avatarUrl)->toContain('size=100');
         expect($avatarUrl)->toContain('background=3B82F6');
         expect($avatarUrl)->toContain('color=FFFFFF');
@@ -245,7 +245,7 @@ describe('NameFormatter - Avatar Generation', function () {
         $avatarUrl = NameFormatter::make($fullname)->avatar(200, 'FF6B6B', '000000');
 
         expect($avatarUrl)->toContain('ui-avatars.com/api/');
-        expect($avatarUrl)->toContain('name=' . urlencode($fullname));
+        expect($avatarUrl)->toContain('name='.urlencode($fullname));
         expect($avatarUrl)->toContain('size=200');
         expect($avatarUrl)->toContain('background=FF6B6B');
         expect($avatarUrl)->toContain('color=000000');
@@ -257,7 +257,7 @@ describe('NameFormatter - Avatar Generation', function () {
         $avatarUrl = NameFormatter::make($fullname)->avatarUrl(150, '10B981', 'FFFFFF');
 
         expect($avatarUrl)->toContain('ui-avatars.com/api/');
-        expect($avatarUrl)->toContain('name=' . urlencode($fullname));
+        expect($avatarUrl)->toContain('name='.urlencode($fullname));
         expect($avatarUrl)->toContain('size=150');
         expect($avatarUrl)->toContain('background=10B981');
         expect($avatarUrl)->toContain('color=FFFFFF');
@@ -270,6 +270,29 @@ describe('NameFormatter - Avatar Generation', function () {
 
         expect($avatarUrl)->toContain('background=FF6B6B');
         expect($avatarUrl)->toContain('color=000000');
+    });
+
+    it('can access avatar as property via __get', function () {
+        $fullname = 'Eneye Tijani Usman';
+
+        $formatter = NameFormatter::make($fullname);
+        $avatarUrl = $formatter->avatar; // Access as property
+
+        expect($avatarUrl)->toContain('ui-avatars.com/api/');
+        expect($avatarUrl)->toContain('name=' . urlencode($fullname));
+        expect($avatarUrl)->toContain('size=100');
+        expect($avatarUrl)->toContain('background=3B82F6');
+        expect($avatarUrl)->toContain('color=FFFFFF');
+    });
+
+    it('avatar property returns same as avatar() method', function () {
+        $fullname = 'Eneye Tijani Usman';
+
+        $formatter = NameFormatter::make($fullname);
+        $avatarMethod = $formatter->avatar();
+        $avatarProperty = $formatter->avatar;
+
+        expect($avatarProperty)->toBe($avatarMethod);
     });
 });
 
@@ -350,7 +373,7 @@ describe('NameFormatter - Property Access', function () {
     it('throws exception for invalid property access', function () {
         $formatter = NameFormatter::make('Eneye Tijani Usman');
 
-        expect(fn() => $formatter->invalid_property)->toThrow(InvalidArgumentException::class);
+        expect(fn () => $formatter->invalid_property)->toThrow(InvalidArgumentException::class);
     });
 });
 
