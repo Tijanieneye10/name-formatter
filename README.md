@@ -28,7 +28,7 @@ You can install the package via Composer:
 composer require tijanieneye10/name-formatter
 ```
 
-**Note:** The package uses the namespace `Tijanieneye10\Playground\NameFormatter` in your code.
+**Note:** The package uses the namespace `Tijanieneye10\NameFormatter\NameFormatter` in your code.
 
 ## Requirements
 
@@ -39,7 +39,7 @@ composer require tijanieneye10/name-formatter
 ### Basic Usage
 
 ```php
-use Tijanieneye10\Playground\NameFormatter;
+use Tijanieneye10\NameFormatter\NameFormatter;
 
 // Create a new instance with default LFM format (Last, First, Middle)
 $formatter = new NameFormatter('Eneye Tijani Usman');

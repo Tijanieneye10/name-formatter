@@ -23,17 +23,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Tijanieneye10\\Playground\\": "src"
+            "Tijanieneye10\\NameFormatter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tijanieneye10\\Playground\\Tests\\": "tests"
+            "Tijanieneye10\\NameFormatter\\Tests\\": "tests"
         }
     },
     "scripts": {
         "test": "vendor/bin/pest",
-            "test-coverage": "vendor/bin/pest --coverage",
+        "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/pint"
     },
     "config": {

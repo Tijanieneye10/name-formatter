@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tijanieneye10\Playground;
+namespace Tijanieneye10\NameFormatter;
 
 final class NameFormatter
 {
@@ -46,19 +46,42 @@ final class NameFormatter
             }
         }
 
+        // If no valid format characters found, treat as invalid and use default LFM behavior
+        if (empty($mapping)) {
+            // For invalid formats, use the actual LFM format behavior
+            // This means the first part is Last, second is First, third is Middle
+            $mapping = ['L' => 0, 'F' => 1, 'M' => 2];
+        }
+
         return $mapping;
     }
 
     private function firstname(): string
     {
-        $index = $this->nameMapping['F'] ?? 0;
-        return $this->nameParts[$index] ?? '';
+        if (isset($this->nameMapping['F'])) {
+            $index = $this->nameMapping['F'];
+            // If the mapped index is beyond available parts, use first available
+            if ($index < count($this->nameParts)) {
+                return $this->nameParts[$index] ?? '';
+            }
+        }
+
+        // Fallback: if no F in format or index out of bounds, use first available part
+        return $this->nameParts[0] ?? '';
     }
 
     private function lastname(): string
     {
-        $index = $this->nameMapping['L'] ?? array_key_last($this->nameParts);
-        return $this->nameParts[$index] ?? '';
+        if (isset($this->nameMapping['L'])) {
+            $index = $this->nameMapping['L'];
+            // If the mapped index is beyond available parts, use last available
+            if ($index < count($this->nameParts)) {
+                return $this->nameParts[$index] ?? '';
+            }
+        }
+
+        // Fallback: if no L in format or index out of bounds, use last available part
+        return $this->nameParts[array_key_last($this->nameParts)] ?? '';
     }
 
     private function middlename(): string
@@ -98,9 +121,9 @@ final class NameFormatter
     public function format(string $format = 'F M L'): string
     {
         $replacements = [
-            'F' => $this->firstname,
-            'M' => $this->middlename,
-            'L' => $this->lastname,
+            'F' => $this->firstname(),
+            'M' => $this->middlename(),
+            'L' => $this->lastname(),
         ];
 
         $result = $format;
