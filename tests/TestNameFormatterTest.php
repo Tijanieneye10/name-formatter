@@ -279,7 +279,7 @@ describe('NameFormatter - Avatar Generation', function () {
         $avatarUrl = $formatter->avatar; // Access as property
 
         expect($avatarUrl)->toContain('ui-avatars.com/api/');
-        expect($avatarUrl)->toContain('name=' . urlencode($fullname));
+        expect($avatarUrl)->toContain('name='.urlencode($fullname));
         expect($avatarUrl)->toContain('size=100');
         expect($avatarUrl)->toContain('background=3B82F6');
         expect($avatarUrl)->toContain('color=FFFFFF');
