@@ -24,7 +24,6 @@ final class NameFormatter
         return new self($fullname, $format);
     }
 
-    // Read-only properties that calculate values when accessed
     public function __get(string $name): string
     {
         return match ($name) {
@@ -134,7 +133,6 @@ final class NameFormatter
         // Use strtr for single-pass replacement to avoid corruption
         $result = strtr($result, $replacements);
 
-        // Clean up extra spaces
         return preg_replace('/\s+/', ' ', trim($result));
     }
 
